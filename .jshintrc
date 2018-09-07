@@ -1,0 +1,19 @@
+{
+    "browser": true,
+    "devel": true,
+    "esnext": true,
+    "strict": "global",
+    "node": true,
+    "globals": {
+        "jasmine": false,
+        "describe": false,
+        "expect": false,
+        "it": false,
+        "fit": false,
+        "xit": false,
+        "beforeEach": false,
+        "afterEach": false,
+        "module": false,
+        "$": false
+    }
+}
