@@ -17,7 +17,7 @@
         october: 9,
         november: 10,
         december: 11
-    }
+    };
 
     const startOfYear = new Date(demandYear, 0, 1);
     const yearInput = document.querySelector('#demandYear');
@@ -26,7 +26,7 @@
     const getCurrentYear = () => {
         const dateNow = new Date();
         return dateNow.getFullYear();
-    }
+    };
 
     const getNumberOfDays = (cfg) => {
         let lastDate;
@@ -40,7 +40,7 @@
         } while (lastDate.getMonth() > cfg.monthNumber && i < 10);
         console.log(Array.from({length: lastDate.getDate()}, (k, i) => i + 1));
         return lastDate.getDate();
-    }
+    };
 
     const getArrayOfDaysPerMonth = (monthNumber, day=1) => {
         const currentYear = getCurrentYear();
@@ -48,7 +48,7 @@
         // console.log(new Date(currentYear, monthNumber, day));
         const numberOfdays = getNumberOfDays({currentYear, monthNumber, day});
         return Array.from({length: numberOfdays}, (k, i) => i + 1);
-    }
+    };
 
     const buildDaysGrid = (month) => {
         const numberOfMonth = monthsOfYear[month.toLowerCase()];
@@ -61,7 +61,7 @@
         // div.style.background = '#111';
         // div.style.width = '20px';
         // div.style.height = '20px';
-        div.className = 'month-item__days-grid-item'
+        div.className = 'month-item__days-grid-item';
 
         body.appendChild(div);
 
@@ -76,7 +76,7 @@
             clonedDiv.innerHTML = el;
             daysGrid.appendChild(clonedDiv);
         });
-    }
+    };
 
     const buildMonthsGrid = (monthsOfYear, current) => {
         const monthItem = document.querySelector('.month-item');
@@ -90,13 +90,13 @@
         if (e.keyCode === 13) {
             console.log(typeof e.target.value);
         }
-    }
+    };
 
     yearInput.addEventListener('keypress', enterData);
 
     (function checkAllMonths(monthsOfYear) {
         const monthsArray = Object.keys(monthsOfYear);
-        monthsArray.forEach(month => buildMonthsGrid(monthsOfYear, month))
+        monthsArray.forEach(month => buildMonthsGrid(monthsOfYear, month));
     }(monthsOfYear));
     // buildDaysGrid('april');
 }());
