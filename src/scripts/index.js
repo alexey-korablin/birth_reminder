@@ -1,5 +1,6 @@
 (function() {
     'use strict';
+
 //не используется. на перспективу
     const msecInYear = 31536000000;
     let demandYear = 2018;
@@ -30,10 +31,11 @@ const monthsOfYear = {
 Вызываемые функции:
     только встроенные
 */
-    const getCurrentYear = () => {
-        const dateNow = new Date();
-        return dateNow.getFullYear();
-    };
+    // const getCurrentYear = () => {
+    //     const dateNow = new Date();
+    //     return dateNow.getFullYear();
+    // };
+    const getCurrentYear = dateModule.getCurrentYear;
 
 /*
 Функция возвращает количество дней в требуемом месяце. Функция находит последний день в месяце и возвращает дату встроенным методом getDate(). Поиск производится в цикле потем получения даты из значений года, месяца, дня и последующей проверки номера месяца полученного из даты и номера месяца переданного в конфиге. Пока номер месяца полученного путем вычисления new Date(...) больше переданного значения производится уменьшение значения lastDay. При невыполнении условия проверки цикл прекращается и возвращается значение даты полученное выполнением встроенного метода getDate() 
@@ -42,19 +44,20 @@ const monthsOfYear = {
 Вызываемые функции:
     только встроенные методы
 */
-    const getNumberOfDays = (cfg) => {
-        let lastDate;
-        let i = 0;
-        let lastDay = 31;
-        do {
-            lastDate = new Date(cfg.currentYear, cfg.monthNumber, cfg.day = lastDay);
-            // console.log(new Date(cfg.currentYear, cfg.monthNumber, cfg.day = lastDay));
-            lastDay--;
-            i++;
-        } while (lastDate.getMonth() > cfg.monthNumber && i < 10);
-        console.log(Array.from({length: lastDate.getDate()}, (k, i) => i + 1));
-        return lastDate.getDate();
-    };
+    // const getNumberOfDays = (cfg) => {
+    //     let lastDate;
+    //     let i = 0;
+    //     let lastDay = 31;
+    //     do {
+    //         lastDate = new Date(cfg.currentYear, cfg.monthNumber, cfg.day = lastDay);
+    //         // console.log(new Date(cfg.currentYear, cfg.monthNumber, cfg.day = lastDay));
+    //         lastDay--;
+    //         i++;
+    //     } while (lastDate.getMonth() > cfg.monthNumber && i < 10);
+    //     console.log(Array.from({length: lastDate.getDate()}, (k, i) => i + 1));
+    //     return lastDate.getDate();
+    // };
+    const getNumberOfDays = dateModule.getNumberOfDays;
 
 /*
 Функция возвращает массив дат (количество дней в требуемом месяце)
@@ -65,13 +68,15 @@ const monthsOfYear = {
     getCurrentYear/-/ - функция возвращает значение текущего года как строку вида ХХХХ.
     getNumberOfDays/-/ - функция возвращает количество дней в требуемом месяце
 */
-    const getArrayOfDaysPerMonth = (monthNumber, day=1) => {
-        const currentYear = getCurrentYear();
-        // console.log(currentYear, monthNumber);
-        // console.log(new Date(currentYear, monthNumber, day));
-        const numberOfdays = getNumberOfDays({currentYear, monthNumber, day});
-        return Array.from({length: numberOfdays}, (k, i) => i + 1);
-    };
+    // const getArrayOfDaysPerMonth = (monthNumber, day=1) => {
+    //     const currentYear = getCurrentYear();
+    //     // console.log(currentYear, monthNumber);
+    //     // console.log(new Date(currentYear, monthNumber, day));
+    //     const numberOfdays = getNumberOfDays({currentYear, monthNumber, day});
+    //     return Array.from({length: numberOfdays}, (k, i) => i + 1);
+    // };
+
+    const getArrayOfDaysPerMonth = dateModule.getArrayOfDaysPerMonth;
 
 /*
 Функция строит сетку из дней недели для конкретного месяца. 
