@@ -1,5 +1,5 @@
 .month-item {
-    width: 10%;
+    width: 262px;
     border: 1px solid #ddd;
     margin: 16px;
     text-align: center;
@@ -8,6 +8,11 @@
 
     &__month-name {
         text-transform: capitalize;
+    }
+
+    &__header {
+        display: flex;
+        font-size: 14px;
     }
 
     &__days-grid {
@@ -24,6 +29,17 @@
             color: #222;
         }
     }
+}
+
+.calendar-net {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.days-name {
+    width: 24px;
+    margin: 6px;
+    cursor: default;
 }
 
 // .month-item

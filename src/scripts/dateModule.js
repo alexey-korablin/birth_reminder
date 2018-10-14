@@ -25,10 +25,26 @@ const dateModule = function () {
         return Array.from({length: numberOfdays}, (k, i) => i + 1);
     };
 
+    const getSingleton = function () {
+        let instance = null;
+        function init(fn) {
+            return fn();
+        }
+        return {
+            getInstance: function (fn) {
+                if (!instance) {
+                    instance = init(fn);
+                }
+                return instance;
+            }
+        };
+    }();
+
     return { 
         getCurrentYear: getCurrentYear,
         getNumberOfDays: getNumberOfDays,
-        getArrayOfDaysPerMonth: getArrayOfDaysPerMonth
+        getArrayOfDaysPerMonth: getArrayOfDaysPerMonth,
+        getSingleton: getSingleton
     };
 }(); 
 

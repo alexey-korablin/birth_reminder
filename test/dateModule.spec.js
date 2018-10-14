@@ -2,6 +2,8 @@
 const assert = require('chai').assert;
 const dateModule = require('../src/scripts/dateModule');
 
+const getClass = (arg) => ({}).toString.call(arg).slice(8, -1);
+
 describe('dateModule', () => {
     it('dateModule is defined', () => {
         assert(dateModule, 'dateModule has been defined');
@@ -66,6 +68,20 @@ describe('dateModule', () => {
                 assert.isNumber(el, 'each element of the resulted array is a number');
             });
         });
-        // TODO: Протестировать содержимое возвращаемых массивов
+    });
+
+    it('dateModule has getSingleton object', () => {
+        assert.isTrue(getClass(dateModule.getSingleton) === 'Object', 'getSingleton is an object');
+    });
+
+    describe('getSingleton', () => {
+        const getSingleton = dateModule.getSingleton;
+
+        it('has property getInstance', () => {
+            assert.exists(getSingleton.getInstance, '#getInstance exists');
+        });
+        it('#getInstance should be a function', () => {
+            assert.isFunction(getSingleton.getInstance, '#getInstance is a function');
+        });
     });
 });
