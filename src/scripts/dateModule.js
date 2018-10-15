@@ -26,16 +26,16 @@ const dateModule = function () {
     };
 
     const getSingleton = function () {
-        let instance = null;
+        let instance = new Map();
         function init(fn) {
             return fn();
         }
         return {
             getInstance: function (fn) {
-                if (!instance) {
-                    instance = init(fn);
+                if (!instance.get(fn)) {
+                    instance.set(fn, init(fn));
                 }
-                return instance;
+                return instance.get(fn);
             }
         };
     }();
